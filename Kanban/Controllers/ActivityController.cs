@@ -38,5 +38,17 @@ namespace Kanban.Controllers
                 return View(addActivityDto);
             }
         }
+
+        public async Task<IActionResult> ChangeCard(int id)
+        {
+            var activity = await _activityInterface.ChangeCard(id);
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var activity = await _activityInterface.Delete(id);
+            return RedirectToAction("Index");
+        }
     }
 }

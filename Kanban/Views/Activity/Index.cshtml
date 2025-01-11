@@ -6,19 +6,19 @@
                 <h1>Pending</h1>
             @if(Model.Count() > 0)
             {
-                @foreach (var activities in Model.Where(x => x.Status.Name == "Pending"))
+                @foreach (var activity in Model.Where(x => x.Status.Name == "Pending"))
                 {
                     <div class="card text-center">
                         <div class="card-header">
-                            @activities.Status.Name
+                            @activity.Status.Name
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">@activities.Title</h5>
-                            <p class="card-text">@activities.Description</p>
-                            <a href="#">Next Card</a>
+                            <h5 class="card-title">@activity.Title</h5>
+                            <p class="card-text">@activity.Description</p>
+                            <a asp-action="ChangeCard" asp-controller="Activity" asp-route-id="@activity.Id">Next Card</a>
                         </div>
                         <div class="card-footer text-body-secondary">
-                            @activities.CreatedDate.ToString("dd/MM/yyyy")
+                            @activity.CreatedDate.ToString("dd/MM/yyyy")
                         </div>
                     </div>
                 }
@@ -29,19 +29,19 @@
             <h1>OnGoing</h1>
             @if (Model.Count() > 0)
             {
-                @foreach (var activities in Model.Where(x => x.Status.Name == "OnGoing"))
+                @foreach (var activity in Model.Where(x => x.Status.Name == "OnGoing"))
                 {
                     <div class="card text-center">
                         <div class="card-header">
-                            @activities.Status.Name
+                            @activity.Status.Name
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">@activities.Title</h5>
-                            <p class="card-text">@activities.Description</p>
-                            <a href="#">Next Card</a>
+                            <h5 class="card-title">@activity.Title</h5>
+                            <p class="card-text">@activity.Description</p>
+                            <a a asp-action="ChangeCard" asp-controller="Activity" asp-route-id="@activity.Id">Next Card</a>
                         </div>
                         <div class="card-footer text-body-secondary">
-                            @activities.CreatedDate.ToString("dd/MM/yyyy")
+                            @activity.CreatedDate.ToString("dd/MM/yyyy")
                         </div>
                     </div>
                 }
@@ -53,19 +53,19 @@
             <h1>Done</h1>
             @if (Model.Count() > 0)
             {
-                @foreach (var activities in Model.Where(x => x.Status.Name == "Done"))
+                @foreach (var activity in Model.Where(x => x.Status.Name == "Done"))
                 {
                     <div class="card text-center">
                         <div class="card-header">
-                            @activities.Status.Name
+                            @activity.Status.Name
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">@activities.Title</h5>
-                            <p class="card-text">@activities.Description</p>
-                            <a href="#">Delete Card</a>
+                            <h5 class="card-title">@activity.Title</h5>
+                            <p class="card-text">@activity.Description</p>
+                            <a asp-action="Delete" asp-controller="Activity" asp-route-id="@activity.Id">Delete Card</a>
                         </div>
                         <div class="card-footer text-body-secondary">
-                            @activities.CreatedDate.ToString("dd/MM/yyyy")
+                            @activity.CreatedDate.ToString("dd/MM/yyyy")
                         </div>
                     </div>
                 }

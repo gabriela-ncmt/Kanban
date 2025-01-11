@@ -8,5 +8,8 @@ namespace Kanban.Services.Activity
         Task<List<ActivityModel>> GetActivitiesAsync();
         Task<List<StatusModel>> GetStatuses();
         Task<ActivityModel> AddActivity(AddActivityDto addActivityDto);
+
+        Task<ActivityModel> ChangeCard(int activityId);
+        Task<ActivityModel> Delete(int activityId);
     }
 }
