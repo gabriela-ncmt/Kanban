@@ -38,7 +38,7 @@ namespace Kanban.Services.Activity
             }
         }
 
-        public async Task<ActivityModel> PostActivity(PostActivityDto postActivityDto)
+        public async Task<ActivityModel> AddActivity(AddActivityDto addActivityDto)
         {
             try
             {
@@ -47,9 +47,9 @@ namespace Kanban.Services.Activity
                 //mapping activitydto to activitymodel
                 var activity = new ActivityModel()
                 {
-                    Title = postActivityDto.Title,
-                    Description = postActivityDto.Description,
-                    StatusId = postActivityDto.StatusId,
+                    Title = addActivityDto.Title,
+                    Description = addActivityDto.Description,
+                    StatusId = addActivityDto.StatusId,
                     Enrollment = rand.Next(1000, 100000)
                 };
 
