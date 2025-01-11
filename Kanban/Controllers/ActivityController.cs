@@ -1,12 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Kanban.Services.Activity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Kanban.Controllers
 {
     public class ActivityController : Controller
     {
-        public IActionResult Index()
+        private readonly IActivityInterface _activityInterface;
+        public ActivityController(IActivityInterface activityInterface)
         {
-            return View();
+            _activityInterface = activityInterface;
+        }
+        public async Task<IActionResult> Index()
+        {
+            var activities = await _activityInterface.GetActivitiesAsync();
+            return View (activities);
         }
     }
 }
