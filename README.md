@@ -1,8 +1,3 @@
-# Kanban
-
-Aqui está um exemplo de um arquivo `README.md` para o seu projeto de Kanban baseado no tutorial do YouTube:
-
----
 
 # Kanban - Projeto de Aplicação Web
 
