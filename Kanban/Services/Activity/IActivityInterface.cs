@@ -7,6 +7,6 @@ namespace Kanban.Services.Activity
     {
         Task<List<ActivityModel>> GetActivitiesAsync();
         Task<List<StatusModel>> GetStatuses();
-        Task<ActivityModel> PostActivity(PostActivityDto postActivityDto);
+        Task<ActivityModel> AddActivity(AddActivityDto addActivityDto);
     }
 }

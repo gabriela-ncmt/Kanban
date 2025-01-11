@@ -1,4 +1,5 @@
-﻿using Kanban.Services.Activity;
+﻿using Kanban.Dto;
+using Kanban.Services.Activity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kanban.Controllers
@@ -14,6 +15,28 @@ namespace Kanban.Controllers
         {
             var activities = await _activityInterface.GetActivitiesAsync();
             return View (activities);
+        } 
+        public async Task<IActionResult> Add()
+        {
+            var status = await _activityInterface.GetStatuses();
+            ViewBag.Status = status;
+            return View ();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(AddActivityDto addActivityDto)
+        {
+            if(ModelState.IsValid)
+            {
+                var activity = await _activityInterface.AddActivity(addActivityDto);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                var status = await _activityInterface.GetStatuses();
+                ViewBag.Status = status;
+                return View(addActivityDto);
+            }
         }
     }
 }
