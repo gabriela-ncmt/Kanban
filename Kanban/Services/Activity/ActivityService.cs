@@ -1,6 +1,6 @@
 ﻿namespace Kanban.Services.Activity
 {
-    public class ActivityService
+    public class ActivityService : IActivityInterface
     {
     }
 }
