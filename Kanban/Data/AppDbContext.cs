@@ -11,7 +11,7 @@ namespace Kanban.Data
         }
 
         public DbSet<ActivityModel> Activities { get; set; }
-        public DbSet<ActivityModel> Status { get; set; }
+        public DbSet<StatusModel> Status { get; set; }
 
         //Initializing the Status table
         protected override void OnModelCreating(ModelBuilder modelBuilder)
