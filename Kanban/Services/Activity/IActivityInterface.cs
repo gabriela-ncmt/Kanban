@@ -11,5 +11,6 @@ namespace Kanban.Services.Activity
 
         Task<ActivityModel> ChangeCard(int activityId);
         Task<ActivityModel> Delete(int activityId);
+        Task<ActivityModel> ChangePreviousCard(int activityId);
     }
 }

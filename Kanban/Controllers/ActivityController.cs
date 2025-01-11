@@ -50,5 +50,11 @@ namespace Kanban.Controllers
             var activity = await _activityInterface.Delete(id);
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> ChangePreviousCard(int id)
+        {
+            var activity = await _activityInterface.ChangePreviousCard(id);
+            return RedirectToAction("Index");
+        }
     }
 }

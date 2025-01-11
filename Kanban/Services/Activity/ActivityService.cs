@@ -95,5 +95,22 @@ namespace Kanban.Services.Activity
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task<ActivityModel> ChangePreviousCard(int activityId)
+        {
+            try
+            {
+                var activity = await _context.Activities.FindAsync(activityId);
+                activity.StatusId--;
+
+                _context.Update(activity);
+                await _context.SaveChangesAsync();
+                return activity;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

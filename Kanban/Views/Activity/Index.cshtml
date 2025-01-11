@@ -8,14 +8,14 @@
             {
                 @foreach (var activity in Model.Where(x => x.Status.Name == "Pending"))
                 {
-                    <div class="card text-center">
-                        <div class="card-header btn-primary">
+                    <div class="card text-center my-3">
+                        <div class="card-header bg-primary">
                             @activity.Status.Name
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">@activity.Title</h5>
                             <p class="card-text">@activity.Description</p>
-                            <a asp-action="ChangeCard" asp-controller="Activity" asp-route-id="@activity.Id">Next Card</a>
+                            <a asp-action="ChangeCard" asp-controller="Activity" asp-route-id="@activity.Id"><i class="bi bi-arrow-right-square-fill"></i></a>
                         </div>
                         <div class="card-footer text-body-secondary">
                             @activity.CreatedDate.ToString("dd/MM/yyyy")
@@ -31,14 +31,15 @@
             {
                 @foreach (var activity in Model.Where(x => x.Status.Name == "OnGoing"))
                 {
-                    <div class="card text-center">
+                    <div class="card text-center my-3">
                         <div class="card-header bg-warning">
                             @activity.Status.Name
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">@activity.Title</h5>
                             <p class="card-text">@activity.Description</p>
-                            <a a asp-action="ChangeCard" asp-controller="Activity" asp-route-id="@activity.Id">Next Card</a>
+                            <a a asp-action="ChangePreviousCard" asp-controller="Activity" asp-route-id="@activity.Id"><i class="bi bi-arrow-left-square-fill"></i></a>
+                            <a a asp-action="ChangeCard" asp-controller="Activity" asp-route-id="@activity.Id"><i class="bi bi-arrow-right-square-fill"></i></a>
                         </div>
                         <div class="card-footer text-body-secondary">
                             @activity.CreatedDate.ToString("dd/MM/yyyy")
@@ -55,14 +56,15 @@
             {
                 @foreach (var activity in Model.Where(x => x.Status.Name == "Done"))
                 {
-                    <div class="card text-center">
+                    <div class="card text-center my-3">
                         <div class="card-header bg-success">
                             @activity.Status.Name
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">@activity.Title</h5>
                             <p class="card-text">@activity.Description</p>
-                            <a asp-action="Delete" asp-controller="Activity" asp-route-id="@activity.Id">Delete Card</a>
+                            <a a asp-action="ChangePreviousCard" asp-controller="Activity" asp-route-id="@activity.Id"><i class="bi bi-arrow-left-square-fill"></i></a>
+                            <a asp-action="Delete" asp-controller="Activity" asp-route-id="@activity.Id"><i class="bi bi-file-x-fill"></i></a>
                         </div>
                         <div class="card-footer text-body-secondary">
                             @activity.CreatedDate.ToString("dd/MM/yyyy")
