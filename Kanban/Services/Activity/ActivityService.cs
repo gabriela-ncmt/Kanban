@@ -1,23 +1,67 @@
-﻿using Kanban.Dto;
+﻿using Kanban.Data;
+using Kanban.Dto;
 using Kanban.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Kanban.Services.Activity
 {
     public class ActivityService : IActivityInterface
     {
-        public Task<List<ActivityModel>> GetActivities()
+        private readonly AppDbContext _context;
+        public ActivityService(AppDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+        public async Task<List<ActivityModel>> GetActivitiesAsync()
+        {
+            try
+            {
+                var activities = await _context.Activities.Include(x => x.Status).ToListAsync();
+                return activities;
+            } 
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
-        public Task<List<StatusModel>> GetStatuses()
+        public async Task<List<StatusModel>> GetStatuses()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var status = await _context.Status.ToListAsync();
+                return status;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
-        public Task<ActivityModel> PostActivity(PostActivityDto postActivityDto)
+        public async Task<ActivityModel> PostActivity(PostActivityDto postActivityDto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Random rand = new Random();
+
+                //mapping activitydto to activitymodel
+                var activity = new ActivityModel()
+                {
+                    Title = postActivityDto.Title,
+                    Description = postActivityDto.Description,
+                    StatusId = postActivityDto.StatusId,
+                    Enrollment = rand.Next(1000, 100000)
+                };
+
+                _context.Activities.Add(activity);
+                await _context.SaveChangesAsync();
+
+                return activity;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
