@@ -9,7 +9,7 @@
                 @foreach (var activity in Model.Where(x => x.Status.Name == "Pending"))
                 {
                     <div class="card text-center">
-                        <div class="card-header">
+                        <div class="card-header btn-primary">
                             @activity.Status.Name
                         </div>
                         <div class="card-body">
@@ -32,7 +32,7 @@
                 @foreach (var activity in Model.Where(x => x.Status.Name == "OnGoing"))
                 {
                     <div class="card text-center">
-                        <div class="card-header">
+                        <div class="card-header bg-warning">
                             @activity.Status.Name
                         </div>
                         <div class="card-body">
@@ -56,7 +56,7 @@
                 @foreach (var activity in Model.Where(x => x.Status.Name == "Done"))
                 {
                     <div class="card text-center">
-                        <div class="card-header">
+                        <div class="card-header bg-success">
                             @activity.Status.Name
                         </div>
                         <div class="card-body">
