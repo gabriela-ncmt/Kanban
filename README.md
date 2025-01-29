@@ -3,6 +3,8 @@
 
 Este projeto é uma aplicação web de **Kanban** que foi desenvolvido com base no tutorial disponível no YouTube: [Kanban Tutorial](https://www.youtube.com/watch?v=na8ZQqj011E).
 
+Créditos a: [CrislaineLuana](https://github.com/CrislaineLuana)
+
 ## Funcionalidades
 
 - **Criar e gerenciar tarefas:** Criação de tarefas e atribuição de status como "A Fazer", "Em Progresso" e "Concluído".
